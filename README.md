@@ -1,6 +1,6 @@
 # Ruby on Rails Tutorial
 
-## [sample_app]()
+## [sample_app](https://tranquil-thicket-95668.herokuapp.com/)
 
 This is the third application for the [*Ruby on Rails Tutorial*](http://railstutorial.jp/)
 by [Michael Hartl](http://www.michaelhartl.com/). Hello, world!
