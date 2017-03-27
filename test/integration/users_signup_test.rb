@@ -15,6 +15,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div.alert'
     assert_select 'div.alert-danger'
     assert_select 'input.form-control', count: 4
+    assert_select 'form[action="/signup"]'
   end
 
 end
