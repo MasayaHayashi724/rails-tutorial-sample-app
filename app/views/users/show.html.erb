@@ -1,5 +1,5 @@
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
-<p><%= @user.created_at %></p>
-<p><%= @user.updated_at %></p>
-<p><%= Time.now %></p>
+<% provide(:title, @user.name) %>
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
