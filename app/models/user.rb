@@ -9,17 +9,19 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-  # return hash value for string
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
+  class << self
+    # return hash value for string
+    def digest(string)
+      cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+      BCrypt::Password.create(string, cost: cost)
+    end
 
-  # return randomly created token
-  def User.new_token
-    SecureRandom.urlsafe_base64
+    # return randomly created token
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
   end
-
+  
   # remember user on database for eternal session
   def remember
     self.remember_token = User.new_token
