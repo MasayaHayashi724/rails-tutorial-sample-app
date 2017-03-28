@@ -30,4 +30,32 @@ Build server if you pass the test.
 
     rails server
 
+### Deployment on Heroku server
+
+Log in to heroku, and add SSH key.
+
+    heroku login
+    heroku keys:add
+
+Create Heroku App.
+
+    heroku create
+
+Deploy on Heroku.
+
+    git push heroku master
+
+If failed, add remote.
+
+    heroku git:remote -a <Heroku App name>
+
+Reset database, and implement migration, seed.
+
+    heroku pg:reset DATABASE -c <Heroku App name>
+    heroku run rails db:migrate
+    heroku run rails db:seed
+    heroku restart
+
+---
+
 Get more infomation from [*Ruby on Rails Tutorial*](http://railstutorial.jp/)
