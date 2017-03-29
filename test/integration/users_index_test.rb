@@ -29,4 +29,18 @@ class UsersIndexTest < ActionDispatch::IntegrationTest
     get users_path
     assert_select 'a', text: 'delete', count: 0
   end
+
+  test "index should not include non-activated users" do
+    log_in_as(@admin)
+    get users_path
+    assert_template 'users/index'
+    num_page = (User.count / 30.0).ceil
+    for i in 1..num_page do
+      users = User.paginate(page: i)
+      users.each do |user|
+        assert user.activated?
+      end
+    end
+  end
+
 end
